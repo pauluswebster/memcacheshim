@@ -136,11 +136,9 @@ class MemcacheShim
      */
     public function close()
     {
-        return $this->if_connected(function () {
-            $status = $this->_memcached->quit();
-            unset($this->_memcached);
-            return $status;
-        }, false);
+        $status = $this->_memcached->quit();
+        unset($this->_memcached);
+        return $status;
     }
 
     /**
